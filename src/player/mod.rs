@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 pub struct Player;
 #[derive(Debug)]
-pub struct MovementCommandStack {
+pub struct InputStack {
     pub directions: Vec<Direction>,
 }
 #[derive(Debug)]
@@ -13,9 +13,9 @@ pub enum Direction {
 }
 pub struct WalkTimer(pub Timer);
 
-pub fn player_handle_input(
+pub fn handle_input(
     keyboard_input: Res<Input<KeyCode>>,
-    mut query: Query<(&Player, &mut MovementCommandStack)>,
+    mut query: Query<(&Player, &mut InputStack)>,
 ) {
     for (_player, mut command_stack) in &mut query.iter() {
         let mut movement_stack_add: Vec<Direction> = Vec::new();
@@ -35,10 +35,10 @@ pub fn player_handle_input(
     }
 }
 
-pub fn player_handle_movement(
+pub fn handle_movement(
     time: Res<Time>,
     mut timer: ResMut<WalkTimer>,
-    mut player_query: Query<(&Player, &mut Translation, &mut MovementCommandStack)>,
+    mut player_query: Query<(&Player, &mut Translation, &mut InputStack)>,
 ) {
     timer.0.tick(time.delta_seconds);
     if timer.0.finished {

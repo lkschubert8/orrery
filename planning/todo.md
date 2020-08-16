@@ -1,6 +1,7 @@
 - [ ] Get terrain collisions working
 - [ ] Get camera tracking working
 - [ ] Get map hops working
+- [ ] Implement multiple game states
 - [ ] Implement a property in tiled for map warping (need to decide if it's objects or terrain details)
 - [ ] Implement a property in tiled for map edge stictching 
 - [ ] Add better documentation for Components and Systems
