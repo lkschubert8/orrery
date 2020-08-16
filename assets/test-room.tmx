@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" name="main-tileset" tilewidth="16" tileheight="16" tilecount="1056" columns="48">
+  <image source="colored_packed.png" width="768" height="352"/>
+ </tileset>
+ <tileset firstgid="1057" name="terrain" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="terrain.png" width="64" height="64"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="10" height="10" locked="1">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,
+1,340,340,340,340,340,340,340,340,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,340,340,340,340,340,340,1,1,1,
+1,1,1,340,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer id="2" name="TerrainLayer" width="10" height="10" locked="1" opacity="0.1">
+  <properties>
+   <property name="terrain" type="bool" value="true"/>
+  </properties>
+  <data encoding="csv">
+1059,1059,1059,1059,1059,1059,1059,1059,1059,1059,
+1059,1059,1059,1059,1059,1059,1059,1059,1059,1059,
+1059,1057,1057,1057,1057,1057,1057,1057,1057,1059,
+1059,1057,1057,1057,1057,1057,1057,1057,1057,1059,
+1059,1059,1059,1059,1059,1059,1059,1057,1057,1059,
+1059,1057,1057,1059,1057,1057,1057,1057,1057,1059,
+1059,1057,1057,1057,1057,1057,1057,1057,1057,1059,
+1059,1057,1057,1057,1057,1057,1057,1057,1057,1059,
+1059,1057,1057,1057,1057,1057,1057,1057,1057,1059,
+1059,1059,1059,1059,1059,1059,1059,1059,1059,1059
+</data>
+ </layer>
+</map>
