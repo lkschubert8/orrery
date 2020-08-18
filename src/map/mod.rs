@@ -8,6 +8,7 @@ use std::path::Path;
 use tiled::parse;
 
 struct TerrainBlock;
+#[derive(PartialEq, Debug)]
 pub enum Collider {
     Level1,
     Level2,
@@ -18,7 +19,7 @@ pub fn load() -> tiled::Map {
     println!("Opened file");
     let reader = BufReader::new(file);
     let map = parse(reader).unwrap();
-    println!("{:?}", map);
+    // println!("{:?}", map);
     map
 }
 
@@ -26,15 +27,21 @@ pub fn load() -> tiled::Map {
 
 pub fn load_map(
     mut commands: Commands,
-    mut materials: ResMut<Assets<ColorMaterial>>,
     asset_server: Res<AssetServer>,
     mut textures: ResMut<Assets<Texture>>,
+    //mut maps: ResMut<Assets<File>>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
 ) {
-    let map = load();
     let background_handle = asset_server
         .load_sync(&mut textures, "assets/colored_packed.png")
         .unwrap();
+
+    // let map_handle : Handle<File> = asset_server
+    //     .load_sync(&mut maps, "assets/test-room.tmx")
+    //     .unwrap();
+    // let map = parse(maps.get(&map_handle).unwrap()).unwrap();
+    let map = load();
+    asset_server.watch_for_changes().unwrap();
     let texture = textures.get(&background_handle).unwrap();
     let texture_atlas = TextureAtlas::from_grid(background_handle, texture.size, 48, 22);
     let texture_atlas_handle = texture_atlases.add(texture_atlas);
@@ -55,12 +62,12 @@ pub fn load_map(
             for tile in row {
                 if is_terrain {
                     let terrain_type = match tile.gid {
-                        1 => Collider::Level1,
-                        2 => Collider::Level2,
-                        3 => Collider::Blocked,
+                        1057 => Collider::Level1,
+                        1058 => Collider::Level2,
+                        1059 => Collider::Blocked,
                         _ => Collider::Blocked
                     };
-                    commands.spawn((TerrainBlock, terrain_type));
+                    commands.spawn((TerrainBlock, terrain_type, Translation(Vec3::new(x, y, 0.0))));
                 } else {
                     commands.spawn(SpriteSheetComponents {
                         texture_atlas: texture_atlas_handle,

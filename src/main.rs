@@ -38,6 +38,7 @@ fn setup(
             ..Default::default()
         })
         .with(player::Player)
+        .with(player::PlayerCollider)
         .with(player::InputStack {
             directions: Vec::new(),
         }); 
@@ -50,6 +51,6 @@ fn main() {
         .add_startup_system(map::load_map.system())
         .add_resource(player::WalkTimer(Timer::from_seconds(0.33)))
         .add_system(player::handle_input.system())
-        .add_system(player::handle_movement.system())
+        //.add_system(player::handle_movement.system())
         .run();
 }

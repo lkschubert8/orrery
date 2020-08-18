@@ -1,0 +1,17 @@
+* TODO Get terrain collisions working
+Long term I would like this to have some bounce off the wall effect, but for now
+I just want it to prevent someone from actually walking into the wall. My current
+understanding is this will require a modification to the player movement system to
+check if the new translation is allowed
+* TODO Improve the quality of input handling
+It feels to me like the input is just plain wonky. FIX IT!. Changed this to be immmediate based
+so it no longer works off of a command stack
+* TODO Get camera tracking working
+* TODO Get map hops working
+* TODO Implement multiple game states
+* TODO Implement a property in tiled for map warping (need to decide if it's objects or terrain details)
+* TODO Implement a property in tiled for map edge stictching 
+* TODO Add better documentation for Components and Systems
+* TODO Define a project level code organization structure
+* TODO Implement Scriptable actors
+* TODO Implement the four elements physics systems
