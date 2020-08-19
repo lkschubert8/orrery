@@ -22,7 +22,7 @@ fn setup(
 ) {
 
     let transparent_handle = asset_server
-        .load_sync(&mut textures, "assets/colored_transparent_packed.png")
+        .load_sync(&mut textures, "assets/maps/colored_transparent_packed.png")
         .unwrap();
     let transparent_texture = textures.get(&transparent_handle).unwrap();
     let transparent_texture_atlas = TextureAtlas::from_grid(transparent_handle, transparent_texture.size, 48, 22);

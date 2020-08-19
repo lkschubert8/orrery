@@ -8,7 +8,7 @@ use std::path::Path;
 use tiled::parse;
 
 pub fn load() -> tiled::Map {
-    let file = File::open(&Path::new("assets/test-room.tmx")).unwrap();
+    let file = File::open(&Path::new("assets/maps/test-room.tmx")).unwrap();
     println!("Opened file");
     let reader = BufReader::new(file);
     let map = parse(reader).unwrap();
@@ -25,7 +25,7 @@ pub fn load_map(
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
 ) {
     let background_handle = asset_server
-        .load_sync(&mut textures, "assets/colored_packed.png")
+        .load_sync(&mut textures, "assets/maps/colored_packed.png")
         .unwrap();
 
     // let map_handle : Handle<File> = asset_server
