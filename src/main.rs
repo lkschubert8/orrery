@@ -3,8 +3,9 @@ use bevy::{
     render::pass::ClearColor,
     sprite::collide_aabb::{collide, Collision},
 };
-mod player;
-mod map;
+mod components;
+mod entities;
+mod systems;
 
 #[derive(Debug)]
 struct Location {
@@ -37,20 +38,16 @@ fn setup(
             sprite: TextureAtlasSprite::new(362),
             ..Default::default()
         })
-        .with(player::Player)
-        .with(player::PlayerCollider)
-        .with(player::InputStack {
-            directions: Vec::new(),
-        }); 
+        .with(entities::Player);
 }
 
 fn main() {  
     App::build()
         .add_default_plugins()
         .add_startup_system(setup.system())
-        .add_startup_system(map::load_map.system())
-        .add_resource(player::WalkTimer(Timer::from_seconds(0.33)))
-        .add_system(player::handle_input.system())
+        .add_startup_system(systems::asset_loading::map::load_map.system())
+        .add_resource(components::WalkTimer(Timer::from_seconds(0.33)))
+        .add_system(systems::player_movement::handle_input.system())
         //.add_system(player::handle_movement.system())
         .run();
 }

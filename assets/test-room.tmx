@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="3">
  <tileset firstgid="1" name="main-tileset" tilewidth="16" tileheight="16" tilecount="1056" columns="48">
   <image source="colored_packed.png" width="768" height="352"/>
  </tileset>
@@ -15,7 +15,7 @@
 979,340,340,340,340,340,340,1,1,977,
 979,1,1,340,1,1,1,1,1,977,
 979,1,1,1,1,1,1,1,1,977,
-979,1,1,1,1,1,1,879,1,977,
+979,1,1,1,1,1,1,1059,1,977,
 979,1,1,1,1,1,1,1,1,977,
 978,930,930,930,686,930,930,930,930,978
 </data>
@@ -37,4 +37,11 @@
 1059,1059,1059,1059,1057,1059,1059,1059,1059,1059
 </data>
  </layer>
+ <objectgroup id="3" name="Object Layer 1">
+  <object id="1" x="71.3573" y="154.681">
+   <properties>
+    <property name="warp" value="someothermap.tmx,0,0"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

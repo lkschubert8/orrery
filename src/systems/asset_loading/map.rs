@@ -1,19 +1,12 @@
 use bevy::prelude::*;
-
+use crate::entities::*;
+use crate::components::*;
 extern crate tiled;
-
 use std::fs::File;
 use std::io::BufReader;
 use std::path::Path;
 use tiled::parse;
 
-struct TerrainBlock;
-#[derive(PartialEq, Debug)]
-pub enum Collider {
-    Level1,
-    Level2,
-    Blocked
-}
 pub fn load() -> tiled::Map {
     let file = File::open(&Path::new("assets/test-room.tmx")).unwrap();
     println!("Opened file");
