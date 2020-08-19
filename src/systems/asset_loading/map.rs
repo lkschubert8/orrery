@@ -1,6 +1,6 @@
-use bevy::prelude::*;
-use crate::entities::*;
 use crate::components::*;
+use crate::entities::*;
+use bevy::prelude::*;
 extern crate tiled;
 use std::fs::File;
 use std::io::BufReader;
@@ -16,8 +16,7 @@ pub fn load() -> tiled::Map {
     map
 }
 
-
-
+// TODO make this whole thing better
 pub fn load_map(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
@@ -58,13 +57,17 @@ pub fn load_map(
                         1057 => Collider::Level1,
                         1058 => Collider::Level2,
                         1059 => Collider::Blocked,
-                        _ => Collider::Blocked
+                        _ => Collider::Blocked,
                     };
-                    commands.spawn((TerrainBlock, terrain_type, Translation(Vec3::new(x, y, 0.0))));
+                    commands.spawn((
+                        TerrainBlock,
+                        terrain_type,
+                        Translation(Vec3::new(x, y, 0.0)),
+                    ));
                 } else {
                     commands.spawn(SpriteSheetComponents {
                         texture_atlas: texture_atlas_handle,
-                        translation: Translation(Vec3::new(x, y, 0.0)), 
+                        translation: Translation(Vec3::new(x, y, 0.0)),
                         scale: Scale(4.0),
                         sprite: TextureAtlasSprite::new(tile.gid - 1),
                         ..Default::default()

@@ -3,6 +3,7 @@ use bevy::{
     render::pass::ClearColor,
     sprite::collide_aabb::{collide, Collision},
 };
+use bevy_diagnostic::*;
 mod components;
 mod entities;
 mod systems;
@@ -44,10 +45,10 @@ fn setup(
 fn main() {  
     App::build()
         .add_default_plugins()
+        .add_plugin(bevy_diagnostic::FrameTimeDiagnosticsPlugin)
         .add_startup_system(setup.system())
         .add_startup_system(systems::asset_loading::map::load_map.system())
         .add_resource(components::WalkTimer(Timer::from_seconds(0.33)))
         .add_system(systems::player_movement::handle_input.system())
-        //.add_system(player::handle_movement.system())
         .run();
 }
